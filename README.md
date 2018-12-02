@@ -30,3 +30,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 Git is a version control system.
+Creating a new branch is quick.
