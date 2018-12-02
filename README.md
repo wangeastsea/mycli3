@@ -30,4 +30,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 Git is a version control system.
-Git is free software.
