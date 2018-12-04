@@ -8,6 +8,8 @@ const glob = require('glob');
 // 取得相应的页面路径，因为之前的配置，所以是 src 文件夹下的 pages 文件夹
 const PAGE_PATH = path.resolve(__dirname, '../src/pages');
 
+// 用于做相应的merge处理
+const merge = require('webpack-merge')
 /* 
  * 多入口配置
  * 通过 glob 模块读取 pages 文件夹下的所有对应文件夹下的 js * 后缀文件，如果该文件存在
@@ -82,6 +84,7 @@ exports.setPages = configs => {
             filename: filename + '.html',
             // 页面模板需要加对应的js脚本，如果不加这行则每个页面都会引入所有的js脚本
             chunks: ['manifest', 'vendor', filename],
+            // 使用html模板的时候，需要关闭资源自动注入
             inject: true,
         };
 

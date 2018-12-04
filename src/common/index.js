@@ -1,7 +1,7 @@
 import Validate from './validate'
-import Other from './other'
+import Navigator from './navigator.js'
 
 export {
     Validate,
-    Other
+    Navigator
 }
