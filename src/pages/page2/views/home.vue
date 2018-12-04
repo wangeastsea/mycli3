@@ -21,6 +21,7 @@ export default {
     };
   },
   mounted() {
+    debugger
     this.renderFn();
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
 
       // 页面显示
       this.puzzles = this.shuffle(puzzleArr);
-      this.puzzles.push("");
+      this.puzzles.push('');
     },
 
     // 随机打乱数组
@@ -45,7 +46,7 @@ export default {
       // 在 shuffle 函数中 n 值永远是 0，而 w（即 len - i） 值随着循环 i 值的变大而不断减小。
       for (let i = 0; i < len - 1; i++) {
         let idx = Math.floor(Math.random() * (len - i));
-        let temp = arr[idx];
+        let temp = arr[idx]
         arr[idx] = arr[len - i - 1];
         arr[len - i - 1] = temp;
       }
@@ -64,13 +65,13 @@ export default {
         bottomNum = this.puzzles[index + 4];
 
       // 和为空的位置交换数值
-      if (leftNum === "" && index % 4) {
+      if (leftNum === '' && index % 4) {
         this.setPuzzle(index, -1);
-      } else if (rightNum === "" && 3 !== index % 4) {
+      } else if (rightNum === '' && 3 !== index % 4) {
         this.setPuzzle(index, 1);
-      } else if (topNum === "") {
+      } else if (topNum === '') {
         this.setPuzzle(index, -4);
-      } else if (bottomNum === "") {
+      } else if (bottomNum === '') {
         this.setPuzzle(index, 4);
       }
 
@@ -92,12 +93,12 @@ export default {
 
     // 校验是否过关
     passFn() {
-      if (this.puzzles[15] === "") {
+      if (this.puzzles[15] === '') {
         let newPuzzles = this.puzzles.slice(0, 15);
         let isPass = newPuzzles.every((e, i) => e === i + 1);
 
         if (isPass) {
-          alert("恭喜，闯关成功！");
+          alert('恭喜，闯关成功！');
         }
       }
     }

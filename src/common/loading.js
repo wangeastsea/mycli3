@@ -32,8 +32,8 @@ export default {
         
         // Vue.prototype.$loading = Vue.$loading;        
         // 添加组件选项
-        Vue.mixin({            
-            created() {                
+        Vue.mixin({        
+            created () {                
                 this.$loading = Vue.$loading       
             }        
         })    

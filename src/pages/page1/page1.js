@@ -6,7 +6,9 @@ import entryConfig from '@/common/entryConfig/'
 
 // 调用公共方法加载配置
 entryConfig(Vue)
-
+if (process.env.NODE_ENV !== 'production') {
+    Vue.config.performance = true
+}
 new Vue({
     router,
     store,

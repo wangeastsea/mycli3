@@ -13,8 +13,12 @@ module.exports = {
         //关闭禁止混用tab和空格
         "no-mixed-spaces-and-tabs": [0],
          // 关闭语句强制分号结尾
-        "semi": [0]
-        // "indent": ["error", 4]
+        "semi": [0],
+        "indent": ["error", 4],
+        // 忽略注释
+        "ignoreComments": true,
+        // 允许尾部空格
+        "skipBlankLines": true
     },
     parserOptions: {
         parser: 'babel-eslint'

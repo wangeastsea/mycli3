@@ -3,8 +3,11 @@ const merge = require('webpack-merge')
 const cfg = process.env.NODE_ENV === 'production' ? configs.build.env : configs.dev.env
 const utils = require('./build/utils')
 const isPro = process.env.NODE_ENV === 'production'
-const { DefinePlugin } = require('webpack')
+const {
+    DefinePlugin
+} = require('webpack')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
     // 二级目录
     baseUrl: 'vue',
@@ -27,12 +30,23 @@ module.exports = {
     // 但是需要注意的是对于在样式及 html 模板中引用路径的简写时，前面需要加上 ～ 符，否则路径解析会失败
     // chainWebpack: config => {
     //     config.resolve.alias
+    //         .set('_assets', resolve('assets'))
     //         .set('@', resolve('src'))
     //         .set('_lib', resolve('src/common'))
     //         .set('_com', resolve('src/components'))
     //         .set('_img', resolve('src/images'))
     //         .set('_ser', resolve('src/services'))
     // },
+    configureWebpack: config => {
+        if (isPro) {
+            return {
+                plugins: [
+                    // 使用包分析工具
+                    new BundleAnalyzerPlugin()
+                ]
+            }
+        }
+    },
     configureWebpack: config => {
         if (isPro) {
             return {
